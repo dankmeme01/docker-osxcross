@@ -98,8 +98,6 @@ jobs:
       matrix:
         variant:
           - ubuntu
-          - debian
-          - alpine
         platform: ${{ fromJson(needs.prepare.outputs.matrix) }}
     steps:
       -
