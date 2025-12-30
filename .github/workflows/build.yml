@@ -23,8 +23,8 @@ on:
       - '**.md'
 
 env:
-  DOCKERHUB_SLUG: crazymax/osxcross
-  GHCR_SLUG: ghcr.io/crazy-max/osxcross
+  DOCKERHUB_SLUG: dankmeme01/osxcross
+  GHCR_SLUG: ghcr.io/dankmeme01/osxcross
 
 jobs:
   prepare:
@@ -126,13 +126,6 @@ jobs:
         with:
           buildkitd-flags: --debug
       -
-        name: Login to DockerHub
-        if: github.event_name != 'pull_request'
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-      -
         name: Login to GHCR
         if: github.event_name != 'pull_request'
         uses: docker/login-action@v3
@@ -154,7 +147,7 @@ jobs:
             *.platform=${{ matrix.platform }}
             *.cache-from=type=gha,scope=${{ matrix.variant }}-${{ env.PLATFORM_PAIR }}
             *.cache-to=type=gha,scope=${{ matrix.variant }}-${{ env.PLATFORM_PAIR }},mode=max
-            *.output=type=image,"name=${{ env.DOCKERHUB_SLUG }},${{ env.GHCR_SLUG }}",push-by-digest=true,name-canonical=true,push=${{ github.event_name != 'pull_request' }}
+            *.output=type=image,"name=${{ env.GHCR_SLUG }}",push-by-digest=true,name-canonical=true,push=${{ github.event_name != 'pull_request' }}
         env:
           BASE_VARIANT: ${{ matrix.variant }}
       -
