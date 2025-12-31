@@ -1,0 +1,13 @@
+diff --git a/tools/toolchain.cmake b/tools/toolchain.cmake
+index 936456c..92aea93 100644
+--- a/tools/toolchain.cmake
++++ b/tools/toolchain.cmake
+@@ -17,7 +17,7 @@ osxcross_getconf(OSXCROSS_TARGET_DIR)
+ osxcross_getconf(OSXCROSS_TARGET)
+ osxcross_getconf(OSXCROSS_SDK)
+
+-set(CMAKE_SYSTEM_NAME "Darwin")
++set(CMAKE_SYSTEM_NAME "iOS")
+ string(REGEX REPLACE "-.*" "" CMAKE_SYSTEM_PROCESSOR "${OSXCROSS_HOST}")
+
+ # specify the cross compiler

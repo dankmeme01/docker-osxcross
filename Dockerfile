@@ -38,6 +38,7 @@ ADD "https://github.com/tpoechtrager/osxcross.git#${OSX_CROSS_COMMIT}" .
 COPY patches/*.patch .
 RUN patch -p1 < lcxx.patch
 RUN patch -p1 < ios.patch
+RUN patch -p1 < ios2.patch
 
 FROM ubuntu:${UBUNTU_VERSION} AS base-ubuntu
 RUN export DEBIAN_FRONTEND="noninteractive" \
